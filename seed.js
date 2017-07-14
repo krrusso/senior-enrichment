@@ -1,5 +1,4 @@
 const db = require("./db/index");
-// const Author = require('./server/db/models/author');
 const Student = require("./db/models/student");
 const Campus = require("./db/models/campus");
 const Bluebird = require("bluebird");
@@ -7,49 +6,45 @@ const Bluebird = require("bluebird");
 const students = [
   {
     name: "Ken Russo",
-    email: "krrusso@gmail.com"
+    email: "krrusso@gmail.com",
+    campusId: 4
   },
   {
     name: "Rick James",
-    email: "fuckYoCouch@chapelle.com"
+    email: "rickJames@chapelle.com",
+    campusId: 3
   },
   {
     name: "Sid",
-    email: "reddySetGo@gmail.com"
+    email: "reddySetGo@gmail.com",
+    campusId: 1
   },
   {
     name: "Snow",
-    email: "floridaIsCool@aol.com"
+    email: "floridaIsCool@aol.com",
+    campusId: 2
   },
   {
     name: "joseph ranOuttaNames",
-    email: "tooLazy@lazzeeboy.com"
+    email: "tooLazy@lazzeeboy.com",
+    campusId: 2
   }
 ];
 
-const campus = [
+const campuses = [
   {
     name: "Luna",
     image:
       "https://img.purch.com/h/1000/aHR0cDovL3d3dy5zcGFjZS5jb20vaW1hZ2VzL2kvMDAwLzAxOS8wOTEvb3JpZ2luYWwvanVseS1za3l3YXRjaGluZy1wb3J0bGFuZC5qcGc="
-    // students: students[0]
   },
   {
     name: "Mars",
     image: "http://space-facts.com/wp-content/uploads/mars.jpg"
-    // students: students[2]
   },
   {
     name: "Ganymede",
     image:
       "https://upload.wikimedia.org/wikipedia/commons/f/f2/Ganymede_g1_true-edit1.jpg"
-    // students: [
-    //   {
-    //     name: "Snow",
-    //     email: "floridsIsCool@aol.com"
-    //   },
-    //   students[0]
-    // ]
   },
   {
     name: "Death Star",
@@ -57,24 +52,10 @@ const campus = [
   }
 ];
 
-db.sync({ force: true }).then(() =>
-  Promise.all(
-    students.map(student => Student.create(student))
-    // include: [Campus]
-  ).then(() =>
-    Promise.all(
-      campus.map(campus => Campus.create(campus))
-      // .then(function() {
-      //   console.log("Finished inserting data");
-      // })
-      // .catch(function(err) {
-      //   console.error("There was an issue with", err, err.stack);
-      // })
-      // .finally(function() {
-      //   db.close();
-      //   console.log("connection closed");
-      //   return null;
-      // }
+db
+  .sync({ force: true })
+  .then(() =>
+    Promise.all(campuses.map(campus => Campus.create(campus))).then(() =>
+      Promise.all(students.map(student => Student.create(student)))
     )
-  )
-);
+  );

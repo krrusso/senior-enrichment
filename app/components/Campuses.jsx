@@ -9,7 +9,6 @@ class Campuses extends Component {
 
   render() {
     const campuses = this.props.campuses;
-    console.log("props on campuses---=-=-=-==", this.props);
     return (
       <div>
         <h1>This is the Campus Page</h1>

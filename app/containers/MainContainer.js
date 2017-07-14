@@ -7,6 +7,7 @@ import ReactDOM, { render } from "react-dom";
 import store from "../store";
 import Campuses from "../components/Campuses";
 import Students from "../components/Students";
+import SingleCampus from "../components/Singlecampus";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 
@@ -17,17 +18,24 @@ class MainContainer extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <BrowserRouter>
         <div>
-          <h1>You are in the Main Container Component</h1>
           <Switch>
             <Route exact path="/campuses" component={Campuses} />
             <Route
               exact
               path="/students"
               render={() => <Students students={this.props.students} />}
+            />
+            <Route
+              exact
+              path="/campus/:id"
+              render={({ match }) =>
+                <SingleCampus
+                  campuses={[this.props.campuses]}
+                  id={match.params.id}
+                />}
             />
           </Switch>
         </div>

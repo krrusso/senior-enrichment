@@ -9,7 +9,7 @@ const Student = require("./student");
 const Campus = require("./campus");
 
 // ---------Associations
-Campus.hasMany(Student);
+// Campus.hasMany(Student);
 Student.belongsTo(Campus);
 
 module.exports = { Student, Campus };

@@ -1,11 +1,9 @@
 const router = require("express").Router();
 const Campus = require("../../db/models/index").Campus;
-// var HttpError = require('../../utils/HttpError');
 
 router.param("id", (req, res, next, id) => {
   Campus.findById(id)
     .then(campus => {
-      // if (!campus) throw HttpError(404);
       req.requestedCampus = campus;
       next();
       return null;
@@ -16,7 +14,6 @@ router.param("id", (req, res, next, id) => {
 router.get("/", (req, res, next) => {
   Campus.findAll()
     .then(campuses => {
-      console.log("-=-=-=-=-=-=-=-=-=-=-=-=campuses routebackend");
       res.send(campuses);
     })
     .catch(next);

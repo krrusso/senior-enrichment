@@ -5,10 +5,6 @@ export default class Homepage extends Component {
     super();
   }
 
-  // componentDidMount() {
-
-  // }
-
   render() {
     return (
       <div>

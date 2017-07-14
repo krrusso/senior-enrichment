@@ -1,11 +1,9 @@
 const router = require("express").Router();
 const Student = require("../../db/models/index").Student;
-// if (!student) throw HttpError(404);
 
 router.param("id", function(req, res, next, id) {
   Student.findById(id)
     .then(function(student) {
-      // if (!student) throw HttpError(404);
       req.requestedStudent = student;
       next();
       return null;
