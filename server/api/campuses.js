@@ -14,8 +14,12 @@ router.param("id", (req, res, next, id) => {
 });
 
 router.get("/", (req, res, next) => {
-  console.log("----------------=-=-=-=-=", Campus);
-  Campus.findAll().then(campuses => res.json(campuses)).catch(next);
+  Campus.findAll()
+    .then(campuses => {
+      console.log("-=-=-=-=-=-=-=-=-=-=-=-=campuses routebackend");
+      res.send(campuses);
+    })
+    .catch(next);
 });
 
 router.get("/:id", (req, res, next) => {

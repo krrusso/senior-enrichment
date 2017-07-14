@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM, { Link } from "react-dom";
 
 class Navbar extends React.Component {
   render() {
@@ -19,7 +19,7 @@ class Navbar extends React.Component {
               <span className="icon-bar" />
               <span className="icon-bar" />
             </button>
-            <a className="navbar-brand" href="#">
+            <a className="navbar-brand" href="/">
               Margaret Hamilton Interplanetary Academy of JavaScript
             </a>
           </div>
