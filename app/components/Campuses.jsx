@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import CampusItem from "./CampusItem";
+import { connect } from "react-redux";
 
-export default class Campuses extends Component {
-  constructor(props) {
-    super(props);
+class Campuses extends Component {
+  constructor() {
+    super();
   }
 
   render() {
@@ -21,3 +22,17 @@ export default class Campuses extends Component {
     );
   }
 }
+
+const mapState = state => {
+  return {
+    campuses: state.campuses
+  };
+};
+
+const mapDispatch = dispatch => {
+  return {
+    getCampusesFromDatabase: () => dispatch(getCampusesFromDatabase())
+  };
+};
+
+export default connect(mapState, mapDispatch)(Campuses);

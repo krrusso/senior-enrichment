@@ -36,8 +36,7 @@ const campus = [
   },
   {
     name: "Mars",
-    image:
-      "https://s-media-cache-ak0.pinimg.com/736x/f1/2a/6e/f12a6e46e9293c6ec2c5961cf71c5e65--mars-planet-red-planet.jpg	2017-07-13 14:21:01.33-04	2017-07-13 14:21:01.33-04"
+    image: "http://space-facts.com/wp-content/uploads/mars.jpg"
     // students: students[2]
   },
   {

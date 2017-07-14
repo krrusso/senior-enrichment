@@ -1,14 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const CampusItem = ({ campuses }) => {
+const CampusItem = ({ campus }) => {
   return (
     <Link to={`../campus/${campus.id}`} className="col s4">
-      <img className="campus-img" src={campus.img} alt={campus.name} />
+      {console.log("-=-=-=-=-=-=campus stuff", campus)}
+      <img className="campus-img" src={campus.image} alt={campus.name} />
       <p className="campus-label">
         {campus.name}:
         <br />
-        <small>{campus.students.length}</small>
+        {/* <small>{campus}</small> */}
       </p>
     </Link>
   );

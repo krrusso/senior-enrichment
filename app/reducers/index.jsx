@@ -10,8 +10,10 @@ const initialState = {
 //ACTION TYPES
 const GET_CAMPUSES = "GET_CAMPUSES";
 const ADD_CAMPUS = "ADD_CAMPUS";
+const DELETE_CAMPUS = "DELETE_CAMPUS";
 const GET_STUDENTS = "GET_STUDENTS";
 const ADD_STUDENT = "ADD_STUDENT";
+const DELETE_STUDENT = "DELETE_STUDENT";
 
 //action creators
 const getCampuses = campuses => {
@@ -39,6 +41,20 @@ const addStudent = student => {
   return {
     type: ADD_STUDENT,
     student
+  };
+};
+
+const deleteStudent = student => {
+  return {
+    type: DELETE_STUDENT,
+    student
+  };
+};
+
+const deleteCampus = campus => {
+  return {
+    type: DELETE_CAMPUS,
+    campus
   };
 };
 
@@ -84,6 +100,30 @@ export const createNewStudent = student => {
       .then(res => res.data)
       .then(newStudent => {
         dispatch(addStudent(newStudent));
+      })
+      .catch(console.error.bind(console));
+  };
+};
+
+export const deleteCampusFromDatabase = campus => {
+  return function(dispatch) {
+    axios
+      .delete("/api/campuses", campus)
+      .then(res => res.data)
+      .then(campus => {
+        dispatch(deleteCampus(campus));
+      })
+      .catch(console.error.bind(console));
+  };
+};
+
+export const deleteStudentFromDatabase = student => {
+  return function(dispatch) {
+    axios
+      .delete("/api/students", student)
+      .then(res => res.data)
+      .then(student => {
+        dispatch(deleteStudent(student));
       })
       .catch(console.error.bind(console));
   };

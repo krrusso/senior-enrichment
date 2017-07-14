@@ -8,7 +8,6 @@ import store from "../store";
 import Campuses from "../components/Campuses";
 import Students from "../components/Students";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-
 import { connect } from "react-redux";
 
 class MainContainer extends React.Component {
@@ -24,7 +23,7 @@ class MainContainer extends React.Component {
         <div>
           <h1>You are in the Main Container Component</h1>
           <Switch>
-            <Route exact path="/" render={() => <Campuses />} />
+            <Route exact path="/campuses" component={Campuses} />
             <Route
               exact
               path="/students"

@@ -30,12 +30,12 @@ class Navbar extends React.Component {
           >
             <ul className="nav navbar-nav">
               <li className="active">
-                <a href="#">
+                <a href="/campuses">
                   Campuses <span className="sr-only">(current)</span>
                 </a>
               </li>
               <li>
-                <a href="#">Students</a>
+                <a href="/students">Students</a>
               </li>
             </ul>
           </div>
