@@ -1,38 +1,10 @@
-nav {
-  background-color: orangered;
-  overflow: hidden;
-  padding: 1em;
+.campus-img {
+  height: 250px;
+  width: 250px;
+  cursor: pointer;
+}
 
-  a {
-    color: #fff;
-  }
-
-  a:visited {
-    color: #fff;
-  }
-
-  border-bottom: 1px solid #000;
-
-  .navWide {
-    margin: 0 auto;
-
-    .wideDiv {
-      text-align: center;
-
-      a {
-        text-decoration: none;
-        display: inline-block;
-        // Adjust padding to increase/decrease the space between links.
-        padding: 0 2em;
-      }
-    }
-  }
-
-
-@media (min-width: 480px) {
-  nav {
-    .navWide {
-      display: block;
-    }
-  }
+.campus-label {
+  margin-top: 3px;
+  margin-bottom: 30px;
 }

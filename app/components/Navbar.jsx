@@ -4,22 +4,44 @@ import ReactDOM from "react-dom";
 class Navbar extends React.Component {
   render() {
     return (
-      <nav>
-        <div className="navWide">
-          <div className="wideDiv">
-            <a href="#">Home</a>
-            <a href="#">Students</a>
+      <nav className="navbar navbar-inverse">
+        <div className="container-fluid">
+          <div className="navbar-header">
+            <button
+              type="button"
+              className="navbar-toggle collapsed"
+              data-toggle="collapse"
+              data-target="#bs-example-navbar-collapse-1"
+              aria-expanded="false"
+            >
+              <span className="sr-only">Toggle navigation</span>
+              <span className="icon-bar" />
+              <span className="icon-bar" />
+              <span className="icon-bar" />
+            </button>
+            <a className="navbar-brand" href="#">
+              Margaret Hamilton Interplanetary Academy of JavaScript
+            </a>
+          </div>
+
+          <div
+            className="collapse navbar-collapse"
+            id="bs-example-navbar-collapse-1"
+          >
+            <ul className="nav navbar-nav">
+              <li className="active">
+                <a href="#">
+                  Campuses <span className="sr-only">(current)</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">Students</a>
+              </li>
+            </ul>
           </div>
         </div>
       </nav>
     );
-  }
-
-  burgerToggle() {
-    const linksel = document.querySelector(".narrowLinks");
-    linksel.style.display === "block"
-      ? (linksel.style.display = "none")
-      : (linksel.style.display = "block");
   }
 }
 

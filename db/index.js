@@ -47,4 +47,4 @@ function sync(force = false, retries = 0, maxRetries = 5) {
 }
 
 //file to comment out if you want a seed
-db.didSync = sync();
+// db.didSync = sync();

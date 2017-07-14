@@ -40,4 +40,13 @@ router.delete("/:id", (req, res, next) => {
     .catch(next);
 });
 
+router.put("/:id", function(req, res, next) {
+  req.requestedCampus
+    .update(req.body)
+    .then(function(campus) {
+      res.json(campus);
+    })
+    .catch(next);
+});
+
 module.exports = router;
