@@ -86,7 +86,6 @@ export const createNewCampus = campus => {
 
 export const getStudentsFromDatabase = () => {
   return function(dispatch) {
-    console.log("-=-=-=-=-=-=get students");
     axios.get("api/students").then(res => res.data).then(students => {
       dispatch(getStudents(students));
     });

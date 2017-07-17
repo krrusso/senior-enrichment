@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import StudentItem from "./StudentItem";
 import { connect } from "react-redux";
+import { withRouter, NavLink } from "react-router-dom";
 
 class Students extends Component {
   constructor() {
@@ -39,4 +40,4 @@ const mapDispatch = dispatch => {
   };
 };
 
-export default connect(mapState, mapDispatch)(Students);
+export default withRouter(connect(mapState, mapDispatch)(Students));

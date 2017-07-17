@@ -23,4 +23,4 @@ const SingleCampus = ({ campuses, id }) => {
   );
 };
 
-export default SingleCampus;
+export default SingleStudent;
