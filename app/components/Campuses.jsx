@@ -11,12 +11,12 @@ class Campuses extends Component {
   render() {
     const campuses = this.props.campuses;
     return (
-      <div>
-        <div>
-          {campuses.map(campus =>
-            <CampusItem key={campus.id} campus={campus} />
-          )}
-        </div>
+      <div className="row">
+        {campuses.map(campus =>
+          <div key={campus.id} className="col-md-4">
+            <CampusItem campus={campus} />
+          </div>
+        )}
       </div>
     );
   }
@@ -35,3 +35,11 @@ const mapDispatch = dispatch => {
 };
 
 export default connect(mapState, mapDispatch)(Campuses);
+
+{
+  /* <div class="row">
+  <div class="col-md-4">.col-md-4</div>
+  <div class="col-md-4">.col-md-4</div>
+  <div class="col-md-4">.col-md-4</div>
+</div>; */
+}

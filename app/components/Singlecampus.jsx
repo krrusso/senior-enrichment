@@ -24,13 +24,12 @@ const SingleCampus = ({ campuses, id, students }) => {
       </div>
       <br />
       <h4>ENROLLED STUDENTS</h4>
-      <ul>
+      <ul className="list-group">
         {enrolledStudents.map(student =>
-          <li key={student.id}>
+          <li className="list-group-item" key={student.id}>
             {student.name}
           </li>
         )}
-        {/* {console.log("ENROLLED", enrolledStudents)} */}
       </ul>
     </div>
   );

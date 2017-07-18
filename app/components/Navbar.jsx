@@ -4,7 +4,7 @@ import ReactDOM, { Link } from "react-dom";
 class Navbar extends React.Component {
   render() {
     return (
-      <nav className="navbar navbar-inverse">
+      <nav className="navbar navbar-inverse navbar-fixed-top">
         <div className="container-fluid">
           <div className="navbar-header">
             <button
