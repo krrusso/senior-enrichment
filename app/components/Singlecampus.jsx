@@ -3,10 +3,6 @@ import React from "react";
 const SingleCampus = ({ campuses, id }) => {
   const selectedCampus = campuses[0].find(campus => campus.id === +id);
 
-  console.log(campuses[0]);
-
-  console.log("THE ID ON THE PROPS IS          ", id);
-
   if (!selectedCampus) return <p>Loading...</p>;
   return (
     <div>

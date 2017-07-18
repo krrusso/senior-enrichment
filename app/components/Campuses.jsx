@@ -35,15 +35,3 @@ const mapDispatch = dispatch => {
 };
 
 export default connect(mapState, mapDispatch)(Campuses);
-
-//   channels.map(channel => {
-//     return (
-//       <li key={channel.id}>
-//         <NavLink to={`/channels/${channel.id}`}>
-//           <span># {channel.name}</span>
-//           <span className="badge">{ messages.filter(message => message.channelId === channel.id).length }</span>
-//         </NavLink>
-//       </li>
-//     );
-//   })
-// }

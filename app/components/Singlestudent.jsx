@@ -3,7 +3,6 @@ import React from "react";
 const SingleStudent = ({ students, id }) => {
   const selectedStudent = students[0].find(student => student.id === +id);
 
-  const { name, image } = selectedStudent;
   if (!selectedStudent) return <p>Loading...</p>;
   return (
     <div>
