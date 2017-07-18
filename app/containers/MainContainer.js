@@ -23,7 +23,10 @@ class MainContainer extends React.Component {
       <BrowserRouter>
         <div>
           <Switch>
-            <Route path="/campuses" component={Campuses} />
+            <Route
+              path="/campuses"
+              render={() => <Campuses campuses={this.props.campuses} />}
+            />
             <Route
               path="/students"
               render={() => <Students students={this.props.students} />}
@@ -35,6 +38,7 @@ class MainContainer extends React.Component {
                 return (
                   <SingleCampus
                     campuses={[this.props.campuses]}
+                    students={[this.props.students]}
                     id={match.params.id}
                   />
                 );
@@ -47,6 +51,7 @@ class MainContainer extends React.Component {
                 return (
                   <SingleStudent
                     students={[this.props.students]}
+                    campuses={[this.props.campuses]}
                     id={match.params.id}
                   />
                 );

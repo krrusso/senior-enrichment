@@ -3,7 +3,7 @@ const Student = require("../../db/models/index").Student;
 
 router.param("id", function(req, res, next, id) {
   Student.findById(id)
-    .then(function(student) {
+    .then(student => {
       req.requestedStudent = student;
       next();
       return null;
@@ -12,8 +12,11 @@ router.param("id", function(req, res, next, id) {
 });
 
 router.get("/", (req, res, next) => {
-  console.log("----------------=-=-=-=-=", Student);
-  Student.findAll().then(students => res.json(students)).catch(next);
+  Student.findAll()
+    .then(students => {
+      res.json(students);
+    })
+    .catch(next);
 });
 
 router.get("/:id", (req, res, next) => {

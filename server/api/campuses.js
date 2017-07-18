@@ -26,7 +26,7 @@ router.get("/:id", (req, res, next) => {
 });
 
 router.post("/", (req, res, next) => {
-  Campus.create(req.body).then(dbRes => res.json(dbRes)).catch(next);
+  Campus.create(req.body).then(campuses => res.json(campuses)).catch(next);
 });
 
 router.delete("/:id", (req, res, next) => {
