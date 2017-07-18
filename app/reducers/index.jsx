@@ -1,13 +1,13 @@
 import { combineReducers } from "redux";
 import axios from "axios";
 
-//initial state
+//  INITIAL STATE
 const initialState = {
   campuses: [],
   students: []
 };
 
-//ACTION TYPES
+//  ACTION TYPES
 const GET_CAMPUSES = "GET_CAMPUSES";
 const ADD_CAMPUS = "ADD_CAMPUS";
 const DELETE_CAMPUS = "DELETE_CAMPUS";
@@ -15,7 +15,7 @@ const GET_STUDENTS = "GET_STUDENTS";
 const ADD_STUDENT = "ADD_STUDENT";
 const DELETE_STUDENT = "DELETE_STUDENT";
 
-//action creators
+//  ACTION CREATORS
 const getCampuses = campuses => {
   return {
     type: GET_CAMPUSES,
@@ -58,7 +58,7 @@ const deleteCampus = campus => {
   };
 };
 
-//Thunks
+//  THUNKS
 
 export const getCampusesFromDatabase = () => {
   return function(dispatch) {
@@ -128,10 +128,11 @@ export const deleteStudentFromDatabase = student => {
   };
 };
 
-//reducer
+//  --REDUCER
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case GET_CAMPUSES:
+      console.log(action.campuses);
       return Object.assign({}, state, { campuses: action.campuses });
     case ADD_CAMPUS:
       return Object.assign({}, state, {

@@ -1,7 +1,7 @@
 import React from "react";
 
 const SingleStudent = ({ students, id }) => {
-  const selectedStudent = students[0].find(student => student.id === +id);
+  const selectedStudent = students.find(student => student.id === +id);
 
   if (!selectedStudent) return <p>Loading...</p>;
   return (

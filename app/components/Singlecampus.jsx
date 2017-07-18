@@ -1,10 +1,10 @@
 import React from "react";
 
 const SingleCampus = ({ campuses, id, students }) => {
-  const selectedCampus = campuses[0].find(campus => campus.id === +id);
-
+  const selectedCampus = campuses.find(campus => campus.id === +id);
   if (!selectedCampus) return <p>Loading...</p>;
-  const enrolledStudents = students[0].filter(student => {
+
+  const enrolledStudents = students.filter(student => {
     return student.campusId === +id;
   });
 

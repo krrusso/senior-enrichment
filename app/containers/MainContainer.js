@@ -11,6 +11,7 @@ import SingleCampus from "../components/SingleCampus";
 import SingleStudent from "../components/SingleStudent";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
+import Navbar from "../components/Navbar";
 
 class MainContainer extends React.Component {
   componentDidMount() {
@@ -22,6 +23,7 @@ class MainContainer extends React.Component {
     return (
       <BrowserRouter>
         <div>
+          <Navbar />
           <Switch>
             <Route
               path="/campuses"
@@ -37,8 +39,8 @@ class MainContainer extends React.Component {
                 console.log("Re-rendering single");
                 return (
                   <SingleCampus
-                    campuses={[this.props.campuses]}
-                    students={[this.props.students]}
+                    campuses={this.props.campuses}
+                    students={this.props.students}
                     id={match.params.id}
                   />
                 );
@@ -50,8 +52,8 @@ class MainContainer extends React.Component {
                 console.log("Re-rendering single");
                 return (
                   <SingleStudent
-                    students={[this.props.students]}
-                    campuses={[this.props.campuses]}
+                    students={this.props.students}
+                    campuses={this.props.campuses}
                     id={match.params.id}
                   />
                 );
