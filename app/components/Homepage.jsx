@@ -1,15 +1,11 @@
 import React, { Component } from "react";
 
-export default class Homepage extends Component {
-  constructor() {
-    super();
-  }
+const Homepage = () => {
+  return (
+    <div>
+      <h1>Margaret Hamilton Interplanetary Academy of JavaScript</h1>
+    </div>
+  );
+};
 
-  render() {
-    return (
-      <div>
-        <h1>This is the Homepage</h1>
-      </div>
-    );
-  }
-}
+export default Homepage;

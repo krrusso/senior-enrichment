@@ -95,7 +95,7 @@ export const getStudentsFromDatabase = () => {
 export const createNewStudent = student => {
   return function(dispatch) {
     axios
-      .post("api/students")
+      .post("api/students", student)
       .then(res => res.data)
       .then(newStudent => {
         dispatch(addStudent(newStudent));
@@ -132,7 +132,6 @@ export const deleteStudentFromDatabase = student => {
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case GET_CAMPUSES:
-      console.log(action.campuses);
       return Object.assign({}, state, { campuses: action.campuses });
     case ADD_CAMPUS:
       return Object.assign({}, state, {

@@ -14,8 +14,10 @@ class Students extends Component {
     const campuses = this.props.campuses;
     return (
       <div>
+        <AddStudent />
         <div>
           {students.map(student => {
+            console.log("students in array map", student);
             const campus = campuses.find(item => item.id == student.campusId);
             return (
               <StudentItem key={student.id} student={student} campus={campus} />
@@ -36,7 +38,8 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
-    getStudentsFromDatabase: () => dispatch(getStudentsFromDatabase())
+    getStudentsFromDatabase: () => dispatch(getStudentsFromDatabase()),
+    getCampusesFromDatabase: () => dispatch(getCampusesFromDatabase())
   };
 };
 

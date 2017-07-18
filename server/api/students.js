@@ -26,7 +26,12 @@ router.get("/:id", (req, res, next) => {
 });
 
 router.post("/", (req, res, next) => {
-  Student.create(req.body).then(students => res.json(students)).catch(next);
+  Student.create(req.body)
+    .then(student => {
+      console.log(student.dataValues);
+      res.json(student.dataValues);
+    })
+    .catch(next);
 });
 
 router.delete("/:id", (req, res, next) => {

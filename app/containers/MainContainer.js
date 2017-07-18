@@ -9,6 +9,7 @@ import Campuses from "../components/Campuses";
 import Students from "../components/Students";
 import SingleCampus from "../components/SingleCampus";
 import SingleStudent from "../components/SingleStudent";
+import Homepage from "../components/Homepage";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import Navbar from "../components/Navbar";
@@ -25,6 +26,7 @@ class MainContainer extends React.Component {
         <div>
           <Navbar />
           <Switch>
+            <Route exact path="/" render={() => <Homepage />} />
             <Route
               path="/campuses"
               render={() => <Campuses campuses={this.props.campuses} />}
@@ -69,7 +71,8 @@ class MainContainer extends React.Component {
 const mapState = state => {
   return {
     campuses: state.campuses,
-    students: state.students
+    students: state.students,
+    newStudentEntry: state.newStudentEntry
   };
 };
 
@@ -77,7 +80,6 @@ const mapDispatch = dispatch => {
   return {
     getCampusesFromDatabase: () => dispatch(getCampusesFromDatabase()),
     getStudentsFromDatabase: () => dispatch(getStudentsFromDatabase()),
-    createNewStudent: student => dispatch(createNewStudent(student)),
     createNewCampus: campus => dispatch(createNewCampus(campus)),
     deleteCampusFromDatabase: campusToDelete =>
       dispatch(deleteCampusFromDatabase(campusToDelete)),
