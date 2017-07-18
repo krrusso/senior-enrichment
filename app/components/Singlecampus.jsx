@@ -1,24 +1,26 @@
 import React from "react";
 
 const SingleCampus = ({ campuses, id }) => {
-  const selectedCampus = campuses.find(campus => campus.id === +id);
-  if (!selectedCampus) return null;
+  const selectedCampus = campuses[0].find(campus => campus.id === +id);
 
-  const { name, image } = selectedCampus;
+  console.log(campuses[0]);
 
+  console.log("THE ID ON THE PROPS IS          ", id);
+
+  if (!selectedCampus) return <p>Loading...</p>;
   return (
-    <div className="row">
-      {console.log(name + "--------=========" + this.props)}
-      <h4>
-        {name}
-      </h4>
-      <br />
+    <div>
+      <h1>This is the Single Campus Page</h1>
+      <h3>
+        {selectedCampus.name}
+      </h3>
+
       <div className="col s4 offset-s4">
-        <img className="campus-img" src={image} alt={name} />
-        <p className="campus-label">
-          <br />
-          <br />
-        </p>
+        <img
+          className="campus-img"
+          src={selectedCampus.image}
+          alt={selectedCampus.name}
+        />
       </div>
     </div>
   );

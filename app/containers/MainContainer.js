@@ -7,7 +7,8 @@ import ReactDOM, { render } from "react-dom";
 import store from "../store";
 import Campuses from "../components/Campuses";
 import Students from "../components/Students";
-import SingleCampus from "../components/Singlecampus";
+import SingleCampus from "../components/SingleCampus";
+import SingleStudent from "../components/SingleStudent";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 
@@ -22,20 +23,34 @@ class MainContainer extends React.Component {
       <BrowserRouter>
         <div>
           <Switch>
-            <Route exact path="/campuses" component={Campuses} />
+            <Route path="/campuses" component={Campuses} />
             <Route
-              exact
               path="/students"
               render={() => <Students students={this.props.students} />}
             />
             <Route
-              exact
               path="/campus/:id"
-              render={({ match }) =>
-                <SingleCampus
-                  campuses={[this.props.campuses]}
-                  id={match.params.id}
-                />}
+              render={({ match }) => {
+                console.log("Re-rendering single");
+                return (
+                  <SingleCampus
+                    campuses={[this.props.campuses]}
+                    id={match.params.id}
+                  />
+                );
+              }}
+            />
+            <Route
+              path="/student/:id"
+              render={({ match }) => {
+                console.log("Re-rendering single");
+                return (
+                  <SingleStudent
+                    students={[this.props.students]}
+                    id={match.params.id}
+                  />
+                );
+              }}
             />
           </Switch>
         </div>
@@ -54,7 +69,13 @@ const mapState = state => {
 const mapDispatch = dispatch => {
   return {
     getCampusesFromDatabase: () => dispatch(getCampusesFromDatabase()),
-    getStudentsFromDatabase: () => dispatch(getStudentsFromDatabase())
+    getStudentsFromDatabase: () => dispatch(getStudentsFromDatabase()),
+    createNewStudent: student => dispatch(createNewStudent(student)),
+    createNewCampus: campus => dispatch(createNewCampus(campus)),
+    deleteCampusFromDatabase: campusToDelete =>
+      dispatch(deleteCampusFromDatabase(campusToDelete)),
+    deleteStudentFromDatabase: studentToDelete =>
+      dispatch(deleteStudentFromDatabase)
   };
 };
 

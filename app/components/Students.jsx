@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import StudentItem from "./StudentItem";
+import AddStudent from "./AddStudent";
 import { connect } from "react-redux";
 import { withRouter, NavLink } from "react-router-dom";
 
 class Students extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
   }
 
   render() {
@@ -13,7 +14,6 @@ class Students extends Component {
     const campuses = this.props.campuses;
     return (
       <div>
-        <h1>This is the student Page</h1>
         <div>
           {students.map(student => {
             const campus = campuses.find(item => item.id == student.campusId);
@@ -40,4 +40,4 @@ const mapDispatch = dispatch => {
   };
 };
 
-export default withRouter(connect(mapState, mapDispatch)(Students));
+export default connect(mapState, mapDispatch)(Students);

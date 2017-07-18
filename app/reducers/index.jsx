@@ -147,3 +147,41 @@ export default function reducer(state = initialState, action) {
       return state;
   }
 }
+
+// // ACTION TYPES
+
+// const WRITE_CHANNEL_NAME = 'WRITE_CHANNEL_NAME';
+
+// // ACTION CREATORS
+
+// export function writeChannelName (channelName) {
+//   const action = { type: WRITE_CHANNEL_NAME, channelName };
+//   return action;
+// }
+
+// // REDUCER
+// export default function reducer (state = '', action) {
+
+//   switch (action.type) {
+
+//     case WRITE_CHANNEL_NAME:
+//       return action.channelName;
+
+//     default:
+//       return state;
+//   }
+
+// }
+
+// export function postChannel (channel, history) {
+
+//   return function thunk (dispatch) {
+//     return axios.post('/api/channels', channel)
+//       .then(res => res.data)
+//       .then(newChannel => {
+//         dispatch(getChannel(newChannel));
+//         socket.emit('new-channel', newChannel);
+//         history.push(`/channels/${newChannel.id}`);
+//       });
+//   };
+// }

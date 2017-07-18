@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import CampusItem from "./CampusItem";
+import AddCampus from "./AddCampus";
 import { connect } from "react-redux";
 
 class Campuses extends Component {
@@ -11,7 +12,6 @@ class Campuses extends Component {
     const campuses = this.props.campuses;
     return (
       <div>
-        <h1>This is the Campus Page</h1>
         <div>
           {campuses.map(campus =>
             <CampusItem key={campus.id} campus={campus} />
@@ -35,3 +35,15 @@ const mapDispatch = dispatch => {
 };
 
 export default connect(mapState, mapDispatch)(Campuses);
+
+//   channels.map(channel => {
+//     return (
+//       <li key={channel.id}>
+//         <NavLink to={`/channels/${channel.id}`}>
+//           <span># {channel.name}</span>
+//           <span className="badge">{ messages.filter(message => message.channelId === channel.id).length }</span>
+//         </NavLink>
+//       </li>
+//     );
+//   })
+// }

@@ -1,24 +1,20 @@
 import React from "react";
 
-const SingleCampus = ({ campuses, id }) => {
-  const selectedCampus = campuses.find(campus => campus.id === +id);
+const SingleStudent = ({ students, id }) => {
+  const selectedStudent = students[0].find(student => student.id === +id);
 
-  const { name, image } = selectedCampus;
-
+  const { name, image } = selectedStudent;
+  if (!selectedStudent) return <p>Loading...</p>;
   return (
-    <div className="row">
-      {console.log(name + "--------=========" + this.props)}
-      <h4>
-        {name}
-      </h4>
+    <div>
+      <h1>This is the Single Student Page</h1>
+      <h2>
+        {selectedStudent.name}
+      </h2>
       <br />
-      <div className="col s4 offset-s4">
-        <img className="campus-img" src={image} alt={name} />
-        <p className="campus-label">
-          <br />
-          <br />
-        </p>
-      </div>
+      <h3>
+        {selectedStudent.email}
+      </h3>
     </div>
   );
 };
