@@ -1,52 +1,74 @@
-// import React, { Component } from 'react';
-// import { connect } from 'react-redux';
-// import { writeChannelName, postChannel } from '../store';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { createNewCampus } from "../reducers";
 
-// function AddCampus (props) {
+class AddCampus extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: "",
+      image: ""
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
-//   const { newChannelEntry, handleSubmit, handleChange } = props;
+  handleSubmit(event) {
+    event.preventDefault();
+    const campus = {
+      name: event.target.campusName.value,
+      image: event.target.imageName.value
+    };
+    this.props.makeNewCampus(campus);
 
-//   return (
-//     <form onSubmit={handleSubmit}>
-//       <div className="form-group">
-//         <label htmlFor="name">Create a Channel</label>
-//         <input
-//           value={newChannelEntry}
-//           onChange={handleChange}
-//           className="form-control"
-//           type="text"
-//           name="channelName"
-//           placeholder="Enter channel name"
-//         />
-//       </div>
-//       <div className="form-group">
-//         <button type="submit" className="btn btn-default">Create Channel</button>
-//       </div>
-//     </form>
-//   );
-// }
+    // clear the inputs after submit (except the selector)
+    event.target.campusName.value = "";
+    event.target.imageName.value = "";
+  }
 
-// const mapStateToProps = function (state) {
-//   return {
-//     newChannelEntry: state.newChannelEntry
-//   };
-// };
+  render() {
+    // const campuses = this.props.campuses;
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="name">Create a Campus</label>
+          <input
+            onChange={evt => this.setState({ name: evt.target.value })}
+            className="form-control"
+            type="text"
+            name="campusName"
+            placeholder="Enter Campus name"
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="image">Image Url</label>
+          <input
+            onChange={evt => this.setState({ image: evt.target.value })}
+            className="form-control"
+            type="text"
+            name="imageName"
+            placeholder="Enter an image Url"
+          />
+        </div>
+        <div className="form-group">
+          <button type="submit" className="btn btn-default">
+            Create Campus
+          </button>
+        </div>
+      </form>
+    );
+  }
+}
 
-// const mapDispatchToProps = function (dispatch, ownProps) {
-//   return {
-//     handleChange (evt) {
-//       dispatch(writeChannelName(evt.target.value));
-//     },
-//     handleSubmit (evt) {
-//       evt.preventDefault();
-//       const name = evt.target.channelName.value;
-//       dispatch(postChannel({ name }, ownProps.history));
-//       dispatch(writeChannelName(''));
-//     }
-//   };
-// };
+const mapStateToProps = state => {
+  return {
+    campuses: state.campuses
+  };
+};
 
-// export default connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(NewChannelEntry);
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  makeNewCampus: campus => {
+    dispatch(createNewCampus(campus));
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddCampus);

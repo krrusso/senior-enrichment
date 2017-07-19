@@ -11,12 +11,15 @@ class Campuses extends Component {
   render() {
     const campuses = this.props.campuses;
     return (
-      <div className="row">
-        {campuses.map(campus =>
-          <div key={campus.id} className="col-md-4">
-            <CampusItem campus={campus} />
-          </div>
-        )}
+      <div>
+        <AddCampus campuses={campuses} />
+        <div className="row">
+          {campuses.map(campus =>
+            <div key={campus.id} className="col-md-4">
+              <CampusItem campus={campus} />
+            </div>
+          )}
+        </div>
       </div>
     );
   }
