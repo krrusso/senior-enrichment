@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { createNewCampus } from "../reducers";
+import { createNewCampus } from "../reducers/campusReducer";
 
 class AddCampus extends React.Component {
   constructor(props) {

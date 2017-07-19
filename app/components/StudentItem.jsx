@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
-import { deleteStudentFromDatabase } from "../reducers";
+import { deleteStudentFromDatabase } from "../reducers/studentReducer";
 
 class StudentItem extends React.Component {
   constructor(props) {

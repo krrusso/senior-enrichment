@@ -1,8 +1,8 @@
 import React from "react";
-import {
-  getCampusesFromDatabase,
-  getStudentsFromDatabase
-} from "../reducers/index.jsx";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { connect } from "react-redux";
+import { getCampusesFromDatabase } from "../reducers/campusReducer.jsx";
+import { getStudentsFromDatabase } from "../reducers/studentReducer.jsx";
 import ReactDOM, { render } from "react-dom";
 import store from "../store";
 import Campuses from "../components/Campuses";
@@ -10,12 +10,16 @@ import Students from "../components/Students";
 import SingleCampus from "../components/SingleCampus";
 import SingleStudent from "../components/SingleStudent";
 import Homepage from "../components/Homepage";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { connect } from "react-redux";
 import Navbar from "../components/Navbar";
 
 class MainContainer extends React.Component {
   componentDidMount() {
+    //  INITIAL STATE
+    const state = {
+      campuses: [],
+      students: []
+    };
+
     this.props.getCampusesFromDatabase();
     this.props.getStudentsFromDatabase();
   }
@@ -69,8 +73,7 @@ class MainContainer extends React.Component {
 const mapState = state => {
   return {
     campuses: state.campuses,
-    students: state.students,
-    newStudentEntry: state.newStudentEntry
+    students: state.students
   };
 };
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
-import { deleteCampusFromDatabase } from "../reducers";
+import { deleteCampusFromDatabase } from "../reducers/campusReducer";
 
 class CampusItem extends React.Component {
   constructor(props) {
