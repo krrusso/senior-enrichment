@@ -38,7 +38,6 @@ class MainContainer extends React.Component {
             <Route
               path="/campus/:id"
               render={({ match }) => {
-                console.log("Re-rendering single");
                 return (
                   <SingleCampus
                     campuses={this.props.campuses}
@@ -51,7 +50,6 @@ class MainContainer extends React.Component {
             <Route
               path="/student/:id"
               render={({ match }) => {
-                console.log("Re-rendering single");
                 return (
                   <SingleStudent
                     students={this.props.students}

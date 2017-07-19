@@ -17,46 +17,33 @@ class StudentItem extends React.Component {
   render() {
     const { student, campus } = this.props;
     return (
-      <table className="table table-inverse table-bordered">
-        <thead>
-          <tr>
-            <th>StudentId</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Campus</th>
-            <th>Remove Student</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">
-              {student.id}
-            </th>
-            <td>
-              <NavLink to={`../student/${student.id}`}>
-                {student.name}
-              </NavLink>
-            </td>
-            <td>
-              {student.email}
-            </td>
-            <td>
-              <NavLink to={`../campus/${student.campusId}`}>
-                {student.campusId}
-              </NavLink>
-            </td>
-            <td>
-              <button
-                type="button"
-                className="btn btn-primary"
-                onClick={this.handleDeleteSubmit}
-              >
-                Remove Student
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <tr>
+        <th scope="row">
+          {student.id}
+        </th>
+        <td>
+          <NavLink to={`../student/${student.id}`}>
+            {student.name}
+          </NavLink>
+        </td>
+        <td>
+          {student.email}
+        </td>
+        <td>
+          <NavLink to={`../campus/${student.campusId}`}>
+            {campus.name}
+          </NavLink>
+        </td>
+        <td>
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={this.handleDeleteSubmit}
+          >
+            Remove Student
+          </button>
+        </td>
+      </tr>
     );
   }
 }
@@ -70,52 +57,3 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(StudentItem);
-
-//  ---WORKING COPY---
-
-// import React from "react";
-// import { NavLink } from "react-router-dom";
-// import RemoveStudent from "./RemoveStudent";
-
-// const StudentItem = ({ student, campus }) => {
-//   return (
-//     <table className="table table-inverse table-bordered">
-//       <thead>
-//         <tr>
-//           <th>StudentId</th>
-//           <th>Name</th>
-//           <th>Email</th>
-//           <th>Campus</th>
-//           <th>Remove Student</th>
-//         </tr>
-//       </thead>
-//       <tbody>
-//         <tr>
-//           <th scope="row">
-//             {student.id}
-//           </th>
-//           <td>
-//             <NavLink to={`../student/${student.id}`}>
-//               {student.name}
-//             </NavLink>
-//           </td>
-//           <td>
-//             {student.email}
-//           </td>
-//           <td>
-//             <NavLink to={`../campus/${student.campusId}`}>
-//               {student.campusId}
-//             </NavLink>
-//           </td>
-//           <td>
-//             <button type="button" className="btn btn-primary">
-//               Remove Student
-//             </button>
-//           </td>
-//         </tr>
-//       </tbody>
-//     </table>
-//   );
-// };
-
-// export default StudentItem;

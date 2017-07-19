@@ -47,5 +47,4 @@ class Navbar extends React.Component {
   }
 }
 
-// ReactDOM.render(<Navbar />, document.querySelector("navbar"));
 module.exports = Navbar;

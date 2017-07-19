@@ -26,7 +26,6 @@ class AddCampus extends React.Component {
   }
 
   render() {
-    // const campuses = this.props.campuses;
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="form-group">

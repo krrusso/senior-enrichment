@@ -14,7 +14,6 @@ const SingleCampus = ({ campuses, id, students }) => {
       <h3>
         {selectedCampus.name}
       </h3>
-
       <div className="col s4 offset-s4">
         <img
           className="campus-img"
@@ -36,11 +35,3 @@ const SingleCampus = ({ campuses, id, students }) => {
 };
 
 export default SingleCampus;
-
-// {students.filter(student => {
-//   return <li key={student.id}>(student.campusId === +id)</li>;
-// })}
-
-// <li key={student.id}>
-//   {student.name}
-// </li>

@@ -104,15 +104,10 @@ export const createNewStudent = student => {
   };
 };
 
-export const deleteCampusFromDatabase = campus => {
+export const deleteCampusFromDatabase = id => {
   return function(dispatch) {
-    axios
-      .delete("/api/campuses", campus)
-      .then(res => res.data)
-      .then(campus => {
-        dispatch(deleteCampus(campus));
-      })
-      .catch(console.error.bind(console));
+    dispatch(deleteCampus(id));
+    axios.delete(`/api/campuses/${id}`, id).catch(console.error.bind(console));
   };
 };
 
@@ -146,10 +141,17 @@ export default function reducer(state = initialState, action) {
         students: [...state.students, action.student]
       });
     case DELETE_STUDENT:
-      return Object.assign(
-        {},
-        state.students.filter(student => student.id !== action.id)
-      );
+      return Object.assign({}, state, {
+        students: state.students.filter(student => {
+          return student.id !== action.student;
+        })
+      });
+    case DELETE_CAMPUS:
+      return Object.assign({}, state, {
+        campuses: state.campuses.filter(campus => {
+          return campus.id !== action.campus;
+        })
+      });
     default:
       return state;
   }

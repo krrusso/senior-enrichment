@@ -37,9 +37,6 @@ router.delete("/:id", (req, res, next) => {
     .then(() => {
       res.status(204).end();
     })
-    .then(() => {
-      res.json("------you have deleted a campus!------");
-    })
     .catch(next);
 });
 

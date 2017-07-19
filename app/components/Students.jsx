@@ -16,12 +16,31 @@ class Students extends Component {
       <div>
         <AddStudent campuses={campuses} />
         <div>
-          {students.map(student => {
-            const campus = campuses.find(item => item.id == student.campusId);
-            return (
-              <StudentItem key={student.id} student={student} campus={campus} />
-            );
-          })}
+          <table className="table table-inverse table-bordered">
+            <thead>
+              <tr>
+                <th>StudentId</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Campus</th>
+                <th>Remove Student</th>
+              </tr>
+            </thead>
+            <tbody>
+              {students.map(student => {
+                const campus = campuses.find(
+                  item => item.id == student.campusId
+                );
+                return (
+                  <StudentItem
+                    key={student.id}
+                    student={student}
+                    campus={campus}
+                  />
+                );
+              })}
+            </tbody>
+          </table>
         </div>
       </div>
     );
