@@ -14,12 +14,6 @@ import Navbar from "../components/Navbar";
 
 class MainContainer extends React.Component {
   componentDidMount() {
-    //  INITIAL STATE
-    const state = {
-      campuses: [],
-      students: []
-    };
-
     this.props.getCampusesFromDatabase();
     this.props.getStudentsFromDatabase();
   }
