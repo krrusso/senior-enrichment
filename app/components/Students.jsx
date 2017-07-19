@@ -14,10 +14,9 @@ class Students extends Component {
     const campuses = this.props.campuses;
     return (
       <div>
-        <AddStudent />
+        <AddStudent campuses={campuses} />
         <div>
           {students.map(student => {
-            console.log("students in array map", student);
             const campus = campuses.find(item => item.id == student.campusId);
             return (
               <StudentItem key={student.id} student={student} campus={campus} />

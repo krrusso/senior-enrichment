@@ -15,3 +15,7 @@
 body {
   padding-top: 70px;
 }
+
+.form-group {
+  width: 20%;
+}

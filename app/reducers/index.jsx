@@ -135,13 +135,13 @@ export default function reducer(state = initialState, action) {
       return Object.assign({}, state, { campuses: action.campuses });
     case ADD_CAMPUS:
       return Object.assign({}, state, {
-        campuses: [...state.campuses, action.campuses]
+        campuses: [...state.campuses, action.campus]
       });
     case GET_STUDENTS:
       return Object.assign({}, state, { students: action.students });
     case ADD_STUDENT:
       return Object.assign({}, state, {
-        students: [...state.students, action.students]
+        students: [...state.students, action.student]
       });
     default:
       return state;

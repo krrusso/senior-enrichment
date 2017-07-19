@@ -10,7 +10,6 @@ class AddStudent extends React.Component {
       email: "",
       campusId: ""
     };
-
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -19,17 +18,18 @@ class AddStudent extends React.Component {
     const student = {
       name: event.target.studentName.value,
       email: event.target.emailName.value,
-      campusId: +event.target.campusName.value
+      campusId: event.target.campusName.value
     };
     this.props.makeNewStudent(student);
 
-    // clear the inputs
+    // clear the inputs after submit (except the selector)
     event.target.studentName.value = "";
     event.target.emailName.value = "";
-    event.target.campusName.value = "";
+    event.target.campusName.value = "Choose a Campus";
   }
 
   render() {
+    const campuses = this.props.campuses;
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="form-group">
@@ -43,16 +43,6 @@ class AddStudent extends React.Component {
           />
         </div>
         <div className="form-group">
-          <select
-            className="custom-select"
-            name="campusName"
-            onChange={evt => this.setState({ campusId: evt.target.value })}
-          >
-            <option defaultValue>Chose a Campus</option>
-            <option value="1">1</option>
-          </select>
-        </div>
-        <div className="form-group">
           <label htmlFor="email">Email Address</label>
           <input
             onChange={evt => this.setState({ email: evt.target.value })}
@@ -61,6 +51,24 @@ class AddStudent extends React.Component {
             name="emailName"
             placeholder="Enter Student email address"
           />
+        </div>
+        <div className="form-group">
+          <select
+            className="custom-select"
+            name="campusName"
+            onChange={evt => {
+              this.setState({ campusId: evt.target.value });
+            }}
+          >
+            <option defaultValue>Choose a Campus</option>
+            {campuses.map(campus => {
+              return (
+                <option key={campus.id} value={campus.id}>
+                  {campus.name}
+                </option>
+              );
+            })}
+          </select>
         </div>
         <div className="form-group">
           <button type="submit" className="btn btn-default">
@@ -72,19 +80,9 @@ class AddStudent extends React.Component {
   }
 }
 
-// <select onChange={event => props.submitAnimal(event.target.value)}>
-//   {animals.map(animal => {
-//     return (
-//       <option key={animal}>
-//         {animal}
-//       </option>
-//     );
-//   })}
-// </select>
-
 const mapStateToProps = state => {
   return {
-    newStudentEntry: state.newStudentEntry
+    campuses: state.campuses
   };
 };
 

@@ -27,9 +27,8 @@ router.get("/:id", (req, res, next) => {
 
 router.post("/", (req, res, next) => {
   Student.create(req.body)
-    .then(student => {
-      console.log(student.dataValues);
-      res.json(student.dataValues);
+    .then(students => {
+      res.send(students.dataValues);
     })
     .catch(next);
 });
@@ -41,7 +40,7 @@ router.delete("/:id", (req, res, next) => {
       res.status(204).end();
     })
     .then(() => {
-      res.json("=-=-=-=you have deleted someone...-=-=-=-=");
+      res.json("=-=-=-=you have deleted a student-=-=-=-=");
     })
     .catch(next);
 });
