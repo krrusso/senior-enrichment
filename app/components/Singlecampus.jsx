@@ -2,7 +2,7 @@ import React from "react";
 
 const SingleCampus = ({ campuses, id, students }) => {
   const selectedCampus = campuses.find(campus => campus.id === +id);
-  if (!selectedCampus) return <p>Loading...</p>;
+  if (!selectedCampus) return <h1>This student is unassigned...</h1>;
 
   const enrolledStudents = students.filter(student => {
     return student.campusId === +id;

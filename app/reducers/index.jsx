@@ -9,10 +9,10 @@ const initialState = {
 
 //  ACTION TYPES
 const GET_CAMPUSES = "GET_CAMPUSES";
-const ADD_CAMPUS = "ADD_CAMPUS";
-const DELETE_CAMPUS = "DELETE_CAMPUS";
 const GET_STUDENTS = "GET_STUDENTS";
+const ADD_CAMPUS = "ADD_CAMPUS";
 const ADD_STUDENT = "ADD_STUDENT";
+const DELETE_CAMPUS = "DELETE_CAMPUS";
 const DELETE_STUDENT = "DELETE_STUDENT";
 
 //  ACTION CREATORS
@@ -23,13 +23,6 @@ const getCampuses = campuses => {
   };
 };
 
-const addCampus = campus => {
-  return {
-    type: ADD_CAMPUS,
-    campus
-  };
-};
-
 const getStudents = students => {
   return {
     type: GET_STUDENTS,
@@ -37,16 +30,16 @@ const getStudents = students => {
   };
 };
 
-const addStudent = student => {
+const addCampus = campus => {
   return {
-    type: ADD_STUDENT,
-    student
+    type: ADD_CAMPUS,
+    campus
   };
 };
 
-const deleteStudent = student => {
+const addStudent = student => {
   return {
-    type: DELETE_STUDENT,
+    type: ADD_STUDENT,
     student
   };
 };
@@ -58,8 +51,14 @@ const deleteCampus = campus => {
   };
 };
 
-//  THUNKS
+const deleteStudent = student => {
+  return {
+    type: DELETE_STUDENT,
+    student
+  };
+};
 
+//  THUNKS
 export const getCampusesFromDatabase = () => {
   return function(dispatch) {
     return axios
@@ -67,6 +66,18 @@ export const getCampusesFromDatabase = () => {
       .then(res => res.data)
       .then(campuses => {
         dispatch(getCampuses(campuses));
+      })
+      .catch(console.error.bind(console));
+  };
+};
+
+export const getStudentsFromDatabase = () => {
+  return function(dispatch) {
+    axios
+      .get("api/students")
+      .then(res => res.data)
+      .then(students => {
+        dispatch(getStudents(students));
       })
       .catch(console.error.bind(console));
   };
@@ -81,14 +92,6 @@ export const createNewCampus = campus => {
         dispatch(addCampus(newCampus));
       })
       .catch(console.error.bind(console));
-  };
-};
-
-export const getStudentsFromDatabase = () => {
-  return function(dispatch) {
-    axios.get("api/students").then(res => res.data).then(students => {
-      dispatch(getStudents(students));
-    });
   };
 };
 
@@ -117,13 +120,6 @@ export const deleteStudentFromDatabase = id => {
     axios.delete(`/api/students/${id}`, id).catch(console.error.bind(console));
   };
 };
-
-//  From Auther
-// export const removeUser = id => dispatch => {
-//   dispatch(remove(id));
-//   axios.delete(`/api/users/${id}`)
-//        .catch(err => console.error(`Removing user: ${id} unsuccesful`, err));
-// };
 
 //  --REDUCER
 export default function reducer(state = initialState, action) {
@@ -156,7 +152,3 @@ export default function reducer(state = initialState, action) {
       return state;
   }
 }
-
-//  FROM AUTHER
-// case REMOVE:
-//   return users.filter(user => user.id !== action.id);

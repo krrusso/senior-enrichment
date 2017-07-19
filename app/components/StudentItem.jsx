@@ -31,7 +31,7 @@ class StudentItem extends React.Component {
         </td>
         <td>
           <NavLink to={`../campus/${student.campusId}`}>
-            {campus.name}
+            {campus ? campus.name : null}
           </NavLink>
         </td>
         <td>

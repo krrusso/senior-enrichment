@@ -10,6 +10,6 @@ const Campus = require("./campus");
 
 // ---------Associations
 // Campus.hasMany(Student);
-Student.belongsTo(Campus);
+Student.belongsTo(Campus, { onDelete: "cascade" });
 
 module.exports = { Student, Campus };

@@ -19,7 +19,6 @@ class AddCampus extends React.Component {
       image: event.target.imageName.value
     };
     this.props.makeNewCampus(campus);
-
     // clear the inputs after submit (except the selector)
     event.target.campusName.value = "";
     event.target.imageName.value = "";
